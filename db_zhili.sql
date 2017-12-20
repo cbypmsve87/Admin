@@ -1,20 +1,19 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : OMES
-Source Server Version : 50018
+Source Server         : MySQL
+Source Server Version : 50067
 Source Host           : localhost:3306
 Source Database       : db_zhili
 
 Target Server Type    : MYSQL
-Target Server Version : 50018
+Target Server Version : 50067
 File Encoding         : 65001
 
-Date: 2017-12-20 17:16:49
+Date: 2017-12-20 23:34:20
 */
 
 SET FOREIGN_KEY_CHECKS=0;
-
 -- ----------------------------
 -- Table structure for `fa_company`
 -- ----------------------------
@@ -35,6 +34,7 @@ CREATE TABLE `fa_company` (
 -- ----------------------------
 INSERT INTO `fa_company` VALUES ('aseeeeee', '深圳普信科技公司', '2017-12-20', null, 'admin', null, null, null);
 INSERT INTO `fa_company` VALUES ('abccccccc', '北京锐科金融有限公司', '2017-12-20', null, 'admin', null, null, null);
+INSERT INTO `fa_company` VALUES ('gggggdss', '上海金创达投资有限公司', '2017-12-20', null, 'admin', null, null, null);
 
 -- ----------------------------
 -- Table structure for `fa_menu`
@@ -57,65 +57,16 @@ CREATE TABLE `fa_menu` (
 -- ----------------------------
 -- Records of fa_menu
 -- ----------------------------
-INSERT INTO `fa_menu` VALUES ('001', '当前信息', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-current.html');
-INSERT INTO `fa_menu` VALUES ('002', '角色管理', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-roles.html');
-INSERT INTO `fa_menu` VALUES ('003', '用户管理', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-users.html');
-INSERT INTO `fa_menu` VALUES ('004', '机构管理', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-company.html');
-INSERT INTO `fa_menu` VALUES ('005', '权限管理', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-authority.html');
-INSERT INTO `fa_menu` VALUES ('006', '资料录入', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-addinfo.html');
-INSERT INTO `fa_menu` VALUES ('007', '征信报告', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-simplyreport.html');
-INSERT INTO `fa_menu` VALUES ('008', '精准报告', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-detailreport.html');
-INSERT INTO `fa_menu` VALUES ('009', '设置', '0', '1', '2017-12-05', null, 'admin', null, null, 'page-user.html');
-INSERT INTO `fa_menu` VALUES ('010', '个人信息', '0', '1', '2017-12-05', null, 'admin', null, null, 'page-user.html');
-
--- ----------------------------
--- Table structure for `fa_post`
--- ----------------------------
-DROP TABLE IF EXISTS `fa_post`;
-CREATE TABLE `fa_post` (
-  `post_id` varchar(38) collate utf8_bin NOT NULL,
-  `post_name` varchar(100) collate utf8_bin default NULL,
-  `post_createtime` date default NULL,
-  `post_updatetime` date default NULL,
-  `post_creater` varchar(50) collate utf8_bin default NULL,
-  `post_updater` varchar(50) collate utf8_bin default NULL,
-  `post_creater_id` varchar(38) collate utf8_bin default NULL,
-  `post_update_id` varchar(38) collate utf8_bin default NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of fa_post
--- ----------------------------
-
--- ----------------------------
--- Table structure for `fa_post_role`
--- ----------------------------
-DROP TABLE IF EXISTS `fa_post_role`;
-CREATE TABLE `fa_post_role` (
-  `post_role_jd` varchar(38) collate utf8_bin default NULL,
-  `post_id` varchar(38) collate utf8_bin default NULL,
-  `role_id` varchar(38) collate utf8_bin default NULL,
-  `cratetime` date default NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of fa_post_role
--- ----------------------------
-
--- ----------------------------
--- Table structure for `fa_post_user`
--- ----------------------------
-DROP TABLE IF EXISTS `fa_post_user`;
-CREATE TABLE `fa_post_user` (
-  `post_user_id` varchar(38) collate utf8_bin default NULL,
-  `post_id` varchar(38) collate utf8_bin default NULL,
-  `user_id` varchar(38) collate utf8_bin default NULL,
-  `createtime` date default NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
--- ----------------------------
--- Records of fa_post_user
--- ----------------------------
+INSERT INTO `fa_menu` VALUES ('dqxx', '当前信息', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-current.html');
+INSERT INTO `fa_menu` VALUES ('grxx', '个人信息', '0', '1', '2017-12-05', null, 'admin', null, null, 'page-user.html');
+INSERT INTO `fa_menu` VALUES ('jggl', '机构管理', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-company.html');
+INSERT INTO `fa_menu` VALUES ('jsgl', '角色管理', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-roles.html');
+INSERT INTO `fa_menu` VALUES ('jzbg', '精准报告', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-detailreport.html');
+INSERT INTO `fa_menu` VALUES ('qqgl', '权限管理', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-authority.html');
+INSERT INTO `fa_menu` VALUES ('ssss', '设置', '0', '1', '2017-12-05', null, 'admin', null, null, 'page-user.html');
+INSERT INTO `fa_menu` VALUES ('yhgl', '用户管理', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-users.html');
+INSERT INTO `fa_menu` VALUES ('zllr', '资料录入', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-addinfo.html');
+INSERT INTO `fa_menu` VALUES ('zxbg', '征信报告', '0', '1', '2017-12-05', null, 'admin', null, null, 'fa-simplyreport.html');
 
 -- ----------------------------
 -- Table structure for `fa_role`
@@ -156,17 +107,19 @@ CREATE TABLE `fa_role_menu` (
 -- ----------------------------
 -- Records of fa_role_menu
 -- ----------------------------
-INSERT INTO `fa_role_menu` VALUES ('absdasd', '001', '001', '2017-12-20');
-INSERT INTO `fa_role_menu` VALUES ('asdasda', '001', '006', '2017-12-20');
-INSERT INTO `fa_role_menu` VALUES ('asdzxcxx', '001', '008', '2017-12-20');
-INSERT INTO `fa_role_menu` VALUES ('dsafasds', '001', '005', '2017-12-20');
-INSERT INTO `fa_role_menu` VALUES ('erwefdsf', '001', '004', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('absdasd', '001', 'dqxx', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('asdasda', '001', 'ssss', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('asdzxcxx', '001', 'jzbg', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('dfdfewd', '001', 'jsgl', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('dsafasds', '001', 'zxbg', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('erwefdsf', '001', 'zllr', '2017-12-20');
 INSERT INTO `fa_role_menu` VALUES ('qwcxccc', '003', '002', '2017-12-20');
 INSERT INTO `fa_role_menu` VALUES ('qwqeqw', '002', '001', '2017-12-20');
-INSERT INTO `fa_role_menu` VALUES ('sdafsaxx', '001', '007', '2017-12-20');
-INSERT INTO `fa_role_menu` VALUES ('sdfasdfd', '001', '002', '2017-12-20');
-INSERT INTO `fa_role_menu` VALUES ('sdfsadfc', '001', '003', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('sdafsaxx', '001', 'yhgl', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('sdfasdfd', '001', 'grxx', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('sdfsadfc', '001', 'jggl', '2017-12-20');
 INSERT INTO `fa_role_menu` VALUES ('wqcxzcz', '004', '003', '2017-12-20');
+INSERT INTO `fa_role_menu` VALUES ('yuyhjjhh', '001', 'qxgl', '2017-12-20');
 
 -- ----------------------------
 -- Table structure for `fa_user`
@@ -190,5 +143,6 @@ CREATE TABLE `fa_user` (
 -- ----------------------------
 -- Records of fa_user
 -- ----------------------------
-INSERT INTO `fa_user` VALUES ('00001', 'huangwanping', '黄万平', '1', '13713963498', null, '2017-12-20', null, null, '001', '深圳普信科技公司');
-INSERT INTO `fa_user` VALUES ('00002', 'denglianggen', '邓亮跟', '1', '18999999999', null, '2017-12-20', null, null, '002', '北京锐科金融有限公司');
+INSERT INTO `fa_user` VALUES ('00001', 'huangwanping', '黄万平', '1', '66666666', null, '2017-12-20', null, null, '001', '深圳普信科技有限公司');
+INSERT INTO `fa_user` VALUES ('00002', 'denglianggen', '邓亮跟', '1', '99999999', null, '2017-12-20', null, null, '002', '北京锐科金融有限公司');
+INSERT INTO `fa_user` VALUES ('00003', 'luyufu', '卢于付', '1', '88888888', null, '2017-12-20', null, null, '003', '上海金创达投资有限公司');
