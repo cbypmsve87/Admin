@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>焦点通</title>
+    <title>Vali Admin</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
@@ -21,18 +21,18 @@
     </section>
     <section class="login-content">
       <div class="logo">
-        <h1>焦点通</h1>
+        <h1>Vali Admin</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" action="index.html">
+        <form class="login-form" id="loginForm" action="index.html" onsubmit = "return LoginCheck();">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>登陆</h3>
           <div class="form-group">
             <label class="control-label">用户</label>
-            <input id="userid" class="form-control" type="text" placeholder="PhoneNum" autofocus>
+            <input class="form-control" id="userAccount" type="text" placeholder="PhoneNum" autofocus>
           </div>
           <div class="form-group">
             <label class="control-label">密码</label>
-            <input class="form-control" type="password" placeholder="password">
+            <input class="form-control" id="userPassword" type="password" placeholder="password">
           </div>
           <div class="form-group">
             <div class="utility">
@@ -45,10 +45,10 @@
             </div>
           </div>
           <div class="form-group btn-container">
-            <button class="btn btn-primary btn-block" onClick="save()"><i class="fa fa-sign-in fa-lg fa-fw"></i>登陆</button>
+            <button class="btn btn-primary btn-block" id="loginBtn"><i class="fa fa-sign-in fa-lg fa-fw"></i>登陆</button>
           </div>
         </form>
-        <form class="forget-form" action="index.html">
+        <form class="forget-form">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-lock"></i>忘记密码 ?</h3>
           <div class="form-group">
             <label class="control-label">电话号码</label>
@@ -71,10 +71,43 @@
   
   <!-- 验证登录，缓存用户信息  -->
   <script type="text/javascript">  
-            function save() {  
-                var str = document.getElementById("userid").value;  
-                sessionStorage.setItem("userid",str);  
-                
-            }
+	function LoginCheck(){        	
+		var userAccount = $("#userAccount").val();
+		var userPassword = $("#userPassword").val();
+		if (userAccount == "") {
+            alert("用户名不能为空");
+            return false;
+        }
+        else if (userPassword == "") {
+            alert("密码不能为空");
+            return false;
+        }
+        else{                		
+		$.ajax({
+			type:"GET",
+			async : false,
+			url:"/web/userLogin/user.do?account="+ userAccount +"&" + "password=" + userPassword,
+			data:"",
+			success: function(result){
+				   if(null !=  result.user){
+					   //var str = document.getElementById("userid").value;  
+		               sessionStorage.setItem("userAccount",result.user_account);  
+		               sessionStorage.setItem("userName",result.user_name);
+		               sessionStorage.setItem("userRoleId",result.user_role_id);
+		               sessionStorage.setItem("userCompany",result.user_company_name);
+		               //$('loginForm').attr('action','index.html'); 
+		               window.location.href = 'index.html'
+		               //alert("登录成功，没有查询到用户相关数据");
+		               return true;
+				   }else{
+					   alert("登录失败，请检查您的用户与密码");
+					   //$("#lab").text("登录失败，没有查询到用户相关数据");
+					   return false;
+					}
+			    }
+			});
+		 return false;
+       }
+  	}
    </script>
 </html>

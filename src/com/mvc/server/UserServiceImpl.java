@@ -18,9 +18,9 @@ public class UserServiceImpl implements UserService {
    @Resource  
    private UserDao userDao;  
    //@Override  
-    public Map<String,Object> getUser(String id) {  
+    public Map<String,Object> userLogin(String account, String password) {  
       // TODO Auto-generated method stub  
-    	User user = this.userDao.getUser(id);
+    	User user = this.userDao.userLogin(account, password);
     	Map<String,Object> map =  new HashMap<String,Object>();
 		map.put("user", user);
 		return map;  

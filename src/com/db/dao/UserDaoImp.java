@@ -15,9 +15,11 @@ public class UserDaoImp implements UserDao {
 	@Resource
 	private SqlSessionTemplate SqlSessionTemplate;
 	@Override
-	public User getUser(String id) {
-		
-		return SqlSessionTemplate.selectOne("com.db.dao.UserDao.getUser", id);
+	public User userLogin(String account, String password) {
+		User user = new User();
+		user.setUser_account(account);
+		user.setUser_password(password);
+		return SqlSessionTemplate.selectOne("com.db.dao.UserDao.userLogin", user);
 	}
 	
 	@Override

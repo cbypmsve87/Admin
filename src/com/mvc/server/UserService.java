@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface UserService{
     
-    public Map<String,Object> getUser(String id);
+    public Map<String,Object> userLogin(String account, String password);
     public Map<String,Object> getAllUser();
 };

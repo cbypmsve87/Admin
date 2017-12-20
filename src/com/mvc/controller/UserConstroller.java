@@ -22,10 +22,10 @@ public class UserConstroller {
 	
 	public UserConstroller() {}
 	
-	@RequestMapping(value = "/view/hello", method = RequestMethod.GET)
+	@RequestMapping(value = "/userLogin/user")
 	@ResponseBody
-	public Map<String,Object> getUser(@RequestParam("id")String id){
-		return userServiceImpl.getUser(id);
+	public Map<String,Object> userLogin(@RequestParam("account")String account, @RequestParam("password")String password){
+		return userServiceImpl.userLogin(account, password);
 	}
 	
 	@RequestMapping(value = "/view/hello/all", method = RequestMethod.GET)

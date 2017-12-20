@@ -9,6 +9,10 @@
         <result column="user_privilege" property="user_privilege" />
         <result column="user_password_md5" property="user_password_md5" />
 </resultMap>
+
+<select id="userLogin" parameterType="com.db.model.User" resultType="com.db.model.User">  
+    SELECT * FROM fa_user WHERE user_account=#{user_account} and user_password=#{user_password}
+</select>  
     
 <select id="getUser" parameterType="string" resultType="com.db.model.User">  
     SELECT * FROM user_infomation WHERE user_id=#{id}
