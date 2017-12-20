@@ -45,7 +45,7 @@
                 <ul class="dropdown-menu settings-menu">
                   <li><a onClick="openPage('设置')"><i class="fa fa-cog fa-lg"></i> 设置</a></li>
                   <li><a onClick="openPage('个人信息')"><i class="fa fa-user fa-lg"></i> 个人信息</a></li>
-                  <li><a href="page-login.html" ><i class="fa fa-sign-out fa-lg"></i> 退出</a></li>
+                  <li><a onClick="clearSeesion()" ><i class="fa fa-sign-out fa-lg"></i> 退出</a></li>
                 </ul> 
               </li>
             </ul>
@@ -93,19 +93,18 @@
     	var userAccount = sessionStorage.getItem("userAccount");
     	if(userAccount == null || userAccount == ""){
     		 window.location.href = 'page-login.html';
+    		 sessionStorage.clear();
     		 return;
     	} 
     	
+    	<!-- 增加用户标签显示  -->
     	var name = sessionStorage.getItem("userName");
-    	var company = sessionStorage.getItem("userCompany");
-    	
+    	var company = sessionStorage.getItem("userCompany");  	
     	$("#userName").text(name);
-    	$("#userCompany").text(company);
-    		
-        //var str = window.localStorage.getItem("userid");  
-        <!-- 增加用户标签显示  -->
-        
+    	$("#userCompany").text(company); 		
+
         <!-- 增加菜单标签显示  -->
+        //var str = window.localStorage.getItem("userid");  
         
         <!-- 缓存菜单链接  -->
         sessionStorage.setItem("当前信息","fa-current.html");
@@ -138,7 +137,12 @@
 			}
 		catch (ex){}
 		}
-		window.setInterval("reinitIframe()", 200);
+	window.setInterval("reinitIframe()", 200);
+	
+	 function clearSeesion(){
+		 sessionStorage.clear();
+		 window.location.href = 'page-login.html';
+	 }
    </script> 
   </body>
 </html>
