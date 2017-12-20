@@ -59,8 +59,8 @@
           <div class="user-panel">
             <div class="pull-left image"><img class="img-circle" src="images/48.jpg" alt="User Image"></div>
             <div class="pull-left info">
-              <p>卢总监</p>
-              <p class="designation">腾飞科技有限责任公司</p>
+              <p id="userName"></p>
+              <p class="designation" id="userCompany"></p>
             </div>
           </div>
           <!-- Sidebar Menu-->
@@ -90,7 +90,19 @@
     <script type="text/javascript">  
     <!-- 获取用户权限信息  -->
     $(document).ready(function(){
-        var str = sessionStorage.getItem("userid");  
+    	var userAccount = sessionStorage.getItem("userAccount");
+    	if(userAccount == null || userAccount == ""){
+    		 window.location.href = 'page-login.html';
+    		 return;
+    	} 
+    	
+    	var name = sessionStorage.getItem("userName");
+    	var company = sessionStorage.getItem("userCompany");
+    	
+    	$("#userName").text(name);
+    	$("#userCompany").text(company);
+    		
+        //var str = window.localStorage.getItem("userid");  
         <!-- 增加用户标签显示  -->
         
         <!-- 增加菜单标签显示  -->

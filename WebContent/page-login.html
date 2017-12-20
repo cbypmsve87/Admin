@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Vali Admin</title>
+    <title>焦点通</title>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
     <!--if lt IE 9
     script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
@@ -21,10 +21,10 @@
     </section>
     <section class="login-content">
       <div class="logo">
-        <h1>Vali Admin</h1>
+        <h1>焦点通平台</h1>
       </div>
       <div class="login-box">
-        <form class="login-form" id="loginForm" action="index.html" onsubmit = "return LoginCheck();">
+        <form class="login-form" id="loginForm" onsubmit = "return LoginCheck();">
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>登陆</h3>
           <div class="form-group">
             <label class="control-label">用户</label>
@@ -90,14 +90,16 @@
 			data:"",
 			success: function(result){
 				   if(null !=  result.user){
-					   //var str = document.getElementById("userid").value;  
-		               sessionStorage.setItem("userAccount",result.user_account);  
-		               sessionStorage.setItem("userName",result.user_name);
-		               sessionStorage.setItem("userRoleId",result.user_role_id);
-		               sessionStorage.setItem("userCompany",result.user_company_name);
+					   //localStorage.clear();
+					   //var str = document.getElementById("userid").value;
 		               //$('loginForm').attr('action','index.html'); 
-		               window.location.href = 'index.html'
-		               //alert("登录成功，没有查询到用户相关数据");
+		               window.location.href = 'index.html';
+		               //alert("登录成功，没有查询到用户相关数据"); 
+		               sessionStorage.clear();
+		               sessionStorage.setItem("userAccount",result.user.user_account);  
+		               sessionStorage.setItem("userName",result.user.user_name);
+		               sessionStorage.setItem("userRoleId",result.user.user_role_id);
+		               sessionStorage.setItem("userCompany",result.user.user_company_name);
 		               return true;
 				   }else{
 					   alert("登录失败，请检查您的用户与密码");

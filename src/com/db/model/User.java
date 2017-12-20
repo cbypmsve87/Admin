@@ -45,7 +45,7 @@ public class User {
 		this.user_password = user_password;
 	}
 	
-	public String User_company_name() {
+	public String getUser_company_name() {
 		return user_company_name;
 	}
 	public void setUser_company_name(String user_company_name) {
