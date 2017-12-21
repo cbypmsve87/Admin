@@ -71,6 +71,15 @@
   
   <!-- 验证登录，缓存用户信息  -->
   <script type="text/javascript">  
+  	$(document).ready(function(){
+  		var str = window.location.search;
+  		if(str != '?abc'){
+  		 	sessionStorage.clear();
+  		  	window.location.href = 'error.html';
+  		 	return ;
+  		}
+  	});
+  
 	function LoginCheck(){        	
 		var userAccount = $("#userAccount").val();
 		var userPassword = $("#userPassword").val();
