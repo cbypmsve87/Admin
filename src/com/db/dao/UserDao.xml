@@ -15,20 +15,20 @@
 </select>  
     
 <select id="getUser" parameterType="string" resultType="com.db.model.User">  
-    SELECT * FROM user_infomation WHERE user_id=#{id}
+    SELECT * FROM fa_user WHERE user_id=#{id}
 </select>  
 
 <select id="getAllUser"  resultMap="User">  
-    SELECT * FROM user_infomation
+    SELECT * FROM fa_user
 </select> 
 
 <insert id="addUser" parameterType="com.db.model.User" flushCache="true">  
-   INSERT INTO user_infomation (user_id,dispaly_name,user_provilege) VALUES (#{user_id},#{dispaly_name},#{user_provilege})  
+   INSERT INTO fa_user (user_id,dispaly_name,user_provilege) VALUES (#{user_id},#{dispaly_name},#{user_provilege})  
 </insert>  
 <update id="updateUser" parameterType="com.db.model.User">  
-    UPDATE user_infomation SET user_provilege=#{user_provilege} WHERE user_id=#{user_id}  
+    UPDATE fa_user SET user_provilege=#{user_provilege} WHERE user_id=#{user_id}  
 </update>  
 <delete id="deleteUser" parameterType="int">  
-    DELETE FROM user_infomation WHERE user_id=#{user_id}  
+    DELETE FROM fa_user WHERE user_id=#{user_id}  
 </delete>  
 </mapper>

@@ -24,9 +24,7 @@ public class UserDaoImp implements UserDao {
 	
 	@Override
 	 public List<User> getAllUser(){
-
 		return SqlSessionTemplate.selectList("com.db.dao.UserDao.getAllUser");
-	
 	}
 
 

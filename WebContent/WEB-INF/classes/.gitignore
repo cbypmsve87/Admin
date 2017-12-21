@@ -1,4 +1,6 @@
 /com/
+/mybatis-config.xml
 /pug/
 /sass/
+/spring-mybatis.xml
 /test/

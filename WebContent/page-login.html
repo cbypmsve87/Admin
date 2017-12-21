@@ -68,57 +68,18 @@
   <script src="js/bootstrap.min.js"></script>
   <script src="js/plugins/pace.min.js"></script>
   <script src="js/main.js"></script>
-  
+  <script src="js/login.js"></script>
   <!-- 验证登录，缓存用户信息  -->
   <script type="text/javascript">  
   	$(document).ready(function(){
-  		var str = window.location.search;
-  		if(str != '?abc'){
+  		var tokenStr = window.location.search;	
+  		<!-- 验证动态链接地址，防止暴露常用链接 -->
+  		if(tokenStr != '?abc'){
   		 	sessionStorage.clear();
   		  	window.location.href = 'error.html';
-  		 	return ;
+  		 	return;
   		}
+  		sessionStorage.setItem("token", tokenStr);
   	});
-  
-	function LoginCheck(){        	
-		var userAccount = $("#userAccount").val();
-		var userPassword = $("#userPassword").val();
-		if (userAccount == "") {
-            alert("用户名不能为空");
-            return false;
-        }
-        else if (userPassword == "") {
-            alert("密码不能为空");
-            return false;
-        }
-        else{                		
-		$.ajax({
-			type:"GET",
-			async : false,
-			url:"/web/userLogin/user.do?account="+ userAccount +"&" + "password=" + userPassword,
-			data:"",
-			success: function(result){
-				   if(null !=  result.user){
-					   //localStorage.clear();
-					   //var str = document.getElementById("userid").value;
-		               //$('loginForm').attr('action','index.html'); 
-		               window.location.href = 'index.html';
-		               //alert("登录成功，没有查询到用户相关数据"); 
-		               sessionStorage.clear();
-		               sessionStorage.setItem("userAccount",result.user.user_account);  
-		               sessionStorage.setItem("userName",result.user.user_name);
-		               sessionStorage.setItem("userRoleId",result.user.user_role_id);
-		               sessionStorage.setItem("userCompany",result.user.user_company_name);
-		               return true;
-				   }else{
-					   alert("登录失败，请检查您的用户与密码");
-					   //$("#lab").text("登录失败，没有查询到用户相关数据");
-					   return false;
-					}
-			    }
-			});
-		 return false;
-       }
-  	}
    </script>
 </html>

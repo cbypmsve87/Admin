@@ -64,15 +64,7 @@
             </div>
           </div>
           <!-- Sidebar Menu-->
-          <ul class="sidebar-menu">
-            <li><a onClick="openPage('当前信息')"><i class="fa fa-dashboard"></i><span>当前信息</span></a></li>
-            <li><a onClick="openPage('用户管理')"><i class="fa fa-laptop"></i><span>用户管理</span></a></li>
-            <li><a onClick="openPage('角色管理')"><i class="fa fa-share"></i><span>角色管理</span></a></li>
-            <li><a onClick="openPage('机构管理')"><i class="fa fa-pie-chart"></i><span>机构管理</span></a></li>
-            <li><a onClick="openPage('权限管理')"><i class="fa fa-file-text"></i><span>权限管理</span></a></li>
-            <li><a onClick="openPage('资料录入')"><i class="fa fa-edit"></i><span>资料录入</span></a></li>
-            <li><a onClick="openPage('征信报告')"><i class="fa fa-th-list"></i><span>征信报告</span></a></li>
-            <li><a onClick="openPage('精准报告')"><i class="fa fa-circle-o"></i><span>精准报告</span></a></li>
+          <ul class="sidebar-menu" id="menus">
           </ul>
         </section>
       </aside>
@@ -87,6 +79,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins/pace.min.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/admin.js"></script>
     <script type="text/javascript">  
     <!-- 获取用户权限信息  -->
     $(document).ready(function(){
@@ -104,45 +97,54 @@
     	$("#userCompany").text(company); 		
 
         <!-- 增加菜单标签显示  -->
-        //var str = window.localStorage.getItem("userid");  
-        
-        <!-- 缓存菜单链接  -->
-        sessionStorage.setItem("当前信息","fa-current.html");
-        sessionStorage.setItem("角色管理","fa-roles.html"); 
-        sessionStorage.setItem("用户管理","fa-users.html");
-        sessionStorage.setItem("机构管理","fa-company.html"); 
-        sessionStorage.setItem("权限管理","fa-authority.html");
-        sessionStorage.setItem("资料录入","fa-addinfo.html"); 
-        sessionStorage.setItem("征信报告","fa-simplyreport.html");
-        sessionStorage.setItem("精准报告","fa-detailreport.html"); 
-        sessionStorage.setItem("设置","page-user.html"); 
-        sessionStorage.setItem("个人信息","page-user.html");
+        var userAccount = sessionStorage.getItem("userAccount");
+        $.ajax({
+			type:"GET",
+			async : false,
+			url:"/web/menu/getMenu.do?account="+ userAccount,
+			data:"",
+			success: function(result){
+				 if(0 !=  result.menuList.length)
+				   {
+						/*<li><a onClick="openPage('当前信息')"><i class="fa fa-dashboard"></i><span>当前信息</span></a></li>
+			            <li><a onClick="openPage('用户管理')"><i class="fa fa-laptop"></i><span>用户管理</span></a></li>
+			            <li><a onClick="openPage('角色管理')"><i class="fa fa-share"></i><span>角色管理</span></a></li>
+			            <li><a onClick="openPage('机构管理')"><i class="fa fa-pie-chart"></i><span>机构管理</span></a></li>
+			            <li><a onClick="openPage('权限管理')"><i class="fa fa-file-text"></i><span>权限管理</span></a></li>
+			            <li><a onClick="openPage('资料录入')"><i class="fa fa-edit"></i><span>资料录入</span></a></li>
+			            <li><a onClick="openPage('征信报告')"><i class="fa fa-th-list"></i><span>征信报告</span></a></li>
+			            <li><a onClick="openPage('精准报告')"><i class="fa fa-circle-o"></i><span>精准报告</span></a></li>
+			             */
+			             
+			            /*  <!-- 缓存菜单链接  -->
+			             sessionStorage.setItem("当前信息","fa-current.html");
+			             sessionStorage.setItem("角色管理","fa-roles.html"); 
+			             sessionStorage.setItem("用户管理","fa-users.html");
+			             sessionStorage.setItem("机构管理","fa-company.html"); 
+			             sessionStorage.setItem("权限管理","fa-authority.html");
+			             sessionStorage.setItem("资料录入","fa-addinfo.html"); 
+			             sessionStorage.setItem("征信报告","fa-simplyreport.html");
+			             sessionStorage.setItem("精准报告","fa-detailreport.html"); 
+			             sessionStorage.setItem("设置","page-user.html"); 
+			             sessionStorage.setItem("个人信息","page-user.html"); */	             
+					  	$("menus").empty();
+					   	for(var i=0; i<result.menuList.length; i++){
+					   		 htmlStr = "<li><a onClick=\"openPage(\'"+result.menuList[i].menu_name+"')\"><i class=\""+
+						   		result.menuList[i].menu_linkclass + "\"></i><span>" + 
+						   		result.menuList[i].menu_name +"</span></a></li>";
+						    $("#menus").append(htmlStr);
+						    sessionStorage.setItem(result.menuList[i].menu_name, result.menuList[i].menu_link);
+					   	}   
+				   }
+				   else
+					{
+					   alert("没有查询到相关数据 ")
+					}
+			    }
+			});
     }); 
     
-    function openPage(str){
-    	if(str == null)
-    		return;
-    	var hrefStr = sessionStorage.getItem(str);  
-    	$("iframe").attr("src", hrefStr);
-    }
-    
-    <!-- 自动适应高度 -->
-    function reinitIframe(){
-		var iframe = document.getElementById("page-other");
-		try{
-			var bHeight = iframe.contentWindow.document.body.scrollHeight;
-			var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
-			var height = Math.max(bHeight, dHeight);
-			iframe.height = height;
-			}
-		catch (ex){}
-		}
 	window.setInterval("reinitIframe()", 200);
-	
-	 function clearSeesion(){
-		 sessionStorage.clear();
-		 window.location.href = 'page-login.html';
-	 }
    </script> 
   </body>
 </html>
