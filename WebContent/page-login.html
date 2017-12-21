@@ -28,11 +28,11 @@
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>登陆</h3>
           <div class="form-group">
             <label class="control-label">用户</label>
-            <input class="form-control" id="userAccount" type="text" placeholder="PhoneNum" autofocus>
+            <input class="form-control" id="userAccount" type="text" placeholder="PhoneNum" value="huangwanping" autofocus>
           </div>
           <div class="form-group">
             <label class="control-label">密码</label>
-            <input class="form-control" id="userPassword" type="password" placeholder="password">
+            <input class="form-control" id="userPassword" type="password" placeholder="password" value="1" >
           </div>
           <div class="form-group">
             <div class="utility">
@@ -71,7 +71,7 @@
   <script src="js/login.js"></script>
   <!-- 验证登录，缓存用户信息  -->
   <script type="text/javascript">  
-  	$(document).ready(function(){
+  	$(document).ready(function(){	
   		var tokenStr = window.location.search;	
   		<!-- 验证动态链接地址，防止暴露常用链接 -->
   		if(tokenStr != '?abc'){
