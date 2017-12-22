@@ -6,13 +6,11 @@
 	<!-- 配置映射类的别名 -->  
     <typeAliases>  
         <typeAlias alias="User" type="com.db.model.User" />  
-        <typeAlias alias="Acticle" type="com.db.model.Acticle" />
         <typeAlias alias="Menu" type="com.db.model.Menu" />
     </typeAliases>    
     <!-- 配置Mapper文件的路径 -->  
     <mappers>  
         <mapper resource="/com/db/dao/UserDao.xml"/>   
-        <mapper resource="/com/db/dao/ActicleDao.xml"/>  
         <mapper resource="/com/db/dao/MenuDao.xml"/>  
     </mappers>  
 </configuration>

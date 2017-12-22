@@ -27,21 +27,4 @@ public class UserConstroller {
 	public Map<String,Object> userLogin(@RequestParam("account")String account, @RequestParam("password")String password){
 		return userServiceImpl.userLogin(account, password);
 	}
-	
-	@RequestMapping(value = "/view/hello/all", method = RequestMethod.GET)
-	@ResponseBody
-	public Map<String,Object> getUser(){
-		return userServiceImpl.getAllUser();
-	}
-	
-	@RequestMapping(value = "/view/hello/str", method = RequestMethod.GET)
-	@ResponseBody
-	public String getHelloStr(){
-		return "server response data.";
-	}
-	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String registPost() {
-		return "/view/index";
-	}
 }

@@ -13,7 +13,7 @@
 		$.ajax({
 			type:"GET",
 			async : false,
-			url:"/web/userLogin/user.do?account="+ userAccount +"&" + "password=" + userPassword,
+			url:"/admin/userLogin/user.do?account="+ userAccount +"&" + "password=" + userPassword,
 			data:"",
 			success: function(result){
 				   if(null !=  result.user){

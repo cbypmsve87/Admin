@@ -74,11 +74,11 @@
   	$(document).ready(function(){	
   		var tokenStr = window.location.search;	
   		<!-- 验证动态链接地址，防止暴露常用链接 -->
-  		if(tokenStr != '?abc'){
+  		/* if(tokenStr != '?abc'){
   		 	sessionStorage.clear();
   		  	window.location.href = 'error.html';
   		 	return;
-  		}
+  		} */
   		sessionStorage.setItem("token", tokenStr);
   	});
    </script>
